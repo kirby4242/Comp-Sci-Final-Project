@@ -33,7 +33,7 @@ public class Window extends JFrame{
     public Window(int x){
         super("Cell Growth Simulator 2016");
         WIDTH = x;
-        HEIGHT = WIDTH*3/4;
+        HEIGHT = WIDTH*9/15-20;
         
         this.createWindow();
     }
@@ -96,6 +96,7 @@ public class Window extends JFrame{
         layout.putConstraint(SpringLayout.WEST, radiation, 120, SpringLayout.WEST, frame);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         frame.setVisible(true);
     }
     public void update(Environment e){                                                       //updates after something happens
