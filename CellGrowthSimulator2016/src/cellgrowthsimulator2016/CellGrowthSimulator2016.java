@@ -16,6 +16,7 @@ public class CellGrowthSimulator2016 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Window w = new Window(1280);
     }
     
 }
