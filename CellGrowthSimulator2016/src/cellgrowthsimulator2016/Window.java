@@ -28,7 +28,10 @@ public class Window extends JFrame{
     JLabel salt;
     JLabel pollution;
     JLabel radiation;
-    
+    JLabel card1 = new JLabel();
+    JLabel card2 = new JLabel();
+    //JLabel card1 = new JLabel();
+    //JLabel card2 = new JLabel();
     
     public Window(int x){
         super("Cell Growth Simulator 2016");
@@ -74,6 +77,8 @@ public class Window extends JFrame{
         layers.add(salt, new Integer(3));
         layers.add(pollution, new Integer(3));
         layers.add(radiation, new Integer(3));
+        layers.add(card1, new Integer(3));
+        layers.add(card2, new Integer(3));
         
         //Place them on the screen
         layout.putConstraint(SpringLayout.NORTH, temp, 355, SpringLayout.NORTH, frame);
@@ -95,19 +100,31 @@ public class Window extends JFrame{
         layout.putConstraint(SpringLayout.NORTH, radiation, 675, SpringLayout.NORTH, frame);
         layout.putConstraint(SpringLayout.WEST, radiation, 120, SpringLayout.WEST, frame);
         
+        //Setting cards to Mr.David for testing purposes
+        card1.setIcon(new ImageIcon("resources/card_5.png"));
+        card2.setIcon(new ImageIcon("resources/card_5.png"));
+
+        //Add cards
+        layout.putConstraint(SpringLayout.NORTH, card1, 388, SpringLayout.NORTH, frame);
+        layout.putConstraint(SpringLayout.WEST, card1, 400, SpringLayout.WEST, frame);
+        layout.putConstraint(SpringLayout.NORTH, card2, 388, SpringLayout.NORTH, frame);
+        layout.putConstraint(SpringLayout.WEST, card2, 800, SpringLayout.WEST, frame);
+        
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
     }
-    public void update(Environment e){                                                       //updates after something happens
+    
+    public void update(){                                                       //updates after something happens
         //Set values
-        temp.setText(Integer.toString(e.temp));
-        sunlight.setText(Integer.toString(e.sunlight));
-        food.setText(Integer.toString(e.food));
-        pH.setText(Double.toString(e.pH));
-        predators.setText(Integer.toString(e.predators));
-        pollution.setText(Integer.toString(e.pollution));
-        radiation.setText(Double.toString(e.radiation));
+        temp.setText(Integer.toString(Environment.temp));
+        sunlight.setText(Integer.toString(Environment.sunlight));
+        food.setText(Integer.toString(Environment.food));
+        pH.setText(Double.toString(Environment.pH));
+        predators.setText(Integer.toString(Environment.predators));
+        pollution.setText(Integer.toString(Environment.pollution));
+        radiation.setText(Double.toString(Environment.radiation));
         
     }
     
