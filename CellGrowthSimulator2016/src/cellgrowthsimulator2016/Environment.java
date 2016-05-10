@@ -10,13 +10,13 @@
  */
 public class Environment {
     //Initialize variables
-    public int temp;
-    public int sunlight;
-    public int food;
-    public double pH;
-    public int predators;
-    public int pollution;
-    public double radiation;
+    public static int temp;
+    public static int sunlight;
+    public static int food;
+    public static double pH;
+    public static int predators;
+    public static int pollution;
+    public static double radiation;
     
     //default constructor
     public Environment(){
