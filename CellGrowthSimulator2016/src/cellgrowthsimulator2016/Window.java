@@ -6,6 +6,8 @@
 package cellgrowthsimulator2016;
 
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +19,7 @@ import javax.swing.SpringLayout;
  * @author Sio
  * @author Kirby4242
  */
-public class Window extends JFrame{
+public class Window extends JFrame implements MouseListener{
     private int WIDTH;
     private int HEIGHT;
     JLabel temp;
@@ -113,6 +115,8 @@ public class Window extends JFrame{
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        card1.addMouseListener(this);
+        card2.addMouseListener(this);
         frame.setVisible(true);
     }
     
@@ -126,6 +130,32 @@ public class Window extends JFrame{
         pollution.setText(Integer.toString(Environment.pollution));
         radiation.setText(Double.toString(Environment.radiation));
         
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        System.out.println("jack Roy is the living embodiment of jesus");
+                
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        System.out.println("in");//active when mouse entered a card
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        System.out.println("out");//active when card leaves a card
     }
     
 }
