@@ -140,7 +140,9 @@ public class Window extends JFrame implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        System.out.println("play");
+        if(h.hand!=null){
+         h.hand.get(1).play();//Find way to filter which card to play
+        }
     }
 
     @Override
