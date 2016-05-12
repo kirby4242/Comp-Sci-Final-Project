@@ -35,6 +35,9 @@ public class Window extends JFrame implements MouseListener{
     static JLabel card1 = new JLabel();
     static JLabel card2 = new JLabel();
     static Hand h = new Hand();                                                        //Creates hand
+    Environment e = new Environment();                                          //Don't call this, just called for the constructor
+    
+    
     
     public Window(int x){
         super("Cell Growth Simulator 2016");
@@ -44,6 +47,8 @@ public class Window extends JFrame implements MouseListener{
         this.createWindow();
     }
     public Window(){}
+
+
     
     private void createWindow(){
         Window frame = new Window();
@@ -126,13 +131,13 @@ public class Window extends JFrame implements MouseListener{
     
     public static void update(){                                                       //updates after something happens
         //Set values
-        temp.setText(Integer.toString(Environment.temp));
-        sunlight.setText(Integer.toString(Environment.sunlight));
-        food.setText(Integer.toString(Environment.food));
-        pH.setText(Double.toString(Environment.pH));
-        predators.setText(Integer.toString(Environment.predators));
-        pollution.setText(Integer.toString(Environment.pollution));
-        radiation.setText(Double.toString(Environment.radiation));
+        temp.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.temp) + "°" + " </font></html>");
+        sunlight.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.sunlight) + " </font></html>");
+        food.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.food) + " </font></html>");
+        pH.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.pH) + " </font></html>");
+        predators.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.predators) + " </font></html>");
+        pollution.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.pollution) + " </font></html>");
+        radiation.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.radiation) + "%" + " </font></html>");
         
         card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
         card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
@@ -141,7 +146,7 @@ public class Window extends JFrame implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent me) {
         if(h.hand!=null){
-         h.hand.get(1).play();//Find way to filter which card to play
+         h.hand.get(1).play();
         }
     }
 
