@@ -5,6 +5,7 @@
  */
 package cellgrowthsimulator2016;
 
+import Cards.Hand;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SpringLayout;
 
+import cards.*;
 /**
  *
  * @author Sio
@@ -22,18 +24,17 @@ import javax.swing.SpringLayout;
 public class Window extends JFrame implements MouseListener{
     private int WIDTH;
     private int HEIGHT;
-    JLabel temp;
-    JLabel sunlight;
-    JLabel food;
-    JLabel pH;
-    JLabel predators;
-    JLabel salt;
-    JLabel pollution;
-    JLabel radiation;
-    JLabel card1 = new JLabel();
-    JLabel card2 = new JLabel();
-    //JLabel card1 = new JLabel();
-    //JLabel card2 = new JLabel();
+    static JLabel temp;
+    static JLabel sunlight;
+    static JLabel food;
+    static JLabel pH;
+    static JLabel predators;
+    static JLabel salt;
+    static JLabel pollution;
+    static JLabel radiation;
+    static JLabel card1 = new JLabel();
+    static JLabel card2 = new JLabel();
+    static Hand h = new Hand();                                                        //Creates hand
     
     public Window(int x){
         super("Cell Growth Simulator 2016");
@@ -104,7 +105,7 @@ public class Window extends JFrame implements MouseListener{
         
         //Setting cards to Mr.David for testing purposes
         card1.setIcon(new ImageIcon("resources/card_5.png"));
-        card2.setIcon(new ImageIcon("resources/card_5.png"));
+        card2.setIcon(new ImageIcon("resources/card_20.png"));
 
         //Add cards
         layout.putConstraint(SpringLayout.NORTH, card1, 388, SpringLayout.NORTH, frame);
@@ -117,10 +118,13 @@ public class Window extends JFrame implements MouseListener{
         frame.setResizable(false);
         card1.addMouseListener(this);
         card2.addMouseListener(this);
+        
+        
+        
         frame.setVisible(true);
     }
     
-    public void update(){                                                       //updates after something happens
+    public static void update(){                                                       //updates after something happens
         //Set values
         temp.setText(Integer.toString(Environment.temp));
         sunlight.setText(Integer.toString(Environment.sunlight));
@@ -130,12 +134,13 @@ public class Window extends JFrame implements MouseListener{
         pollution.setText(Integer.toString(Environment.pollution));
         radiation.setText(Double.toString(Environment.radiation));
         
+        card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
+        card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        System.out.println("jack Roy is the living embodiment of jesus");
-                
+        System.out.println("play");
     }
 
     @Override
