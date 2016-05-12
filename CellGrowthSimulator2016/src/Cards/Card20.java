@@ -11,14 +11,16 @@ import cellgrowthsimulator2016.Environment;
  * @author Kids
  */
 public class Card20 extends Card {
-    String name = "Kawaii Senpai Mr. David";
-    String imageAdress = "resources/card_20.png";
-    int id = 5;
-    String rarity = "Mythic";
     
+    public Card20(){
+        name = "The Shadow Realm";
+        imageAddress = "resources/card_20.png";
+        id = 20;
+        rarity = "Uncommon";
+    }
     @Override
     public void play(){
-        Environment.sunlight += 3;
+        Environment.sunlight -= 3;
         Window.update();
     }    
 }
