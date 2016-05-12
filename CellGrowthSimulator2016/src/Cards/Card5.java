@@ -11,10 +11,13 @@ import cellgrowthsimulator2016.Environment;
  * @author KeeganP
  */
 public class Card5 extends Card {
-    String name = "Kawaii Senpai Mr. David";
-    String imageAdress = "resources/card_5.png";
-    int id = 5;
-    String rarity = "Mythic";
+    
+    public Card5(){
+        name = "Kawaii Senpai Mr. David";
+        imageAddress = "resources/card_5.png";
+        id = 5;
+        rarity = "Mythic";
+    }
     
     @Override
     public void play(){
