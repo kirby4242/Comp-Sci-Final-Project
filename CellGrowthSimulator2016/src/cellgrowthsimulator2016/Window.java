@@ -14,26 +14,29 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SpringLayout;
 
+import cards.*;
 /**
  *
  * @author Sio
  * @author Kirby4242
  */
-public class Window extends JFrame implements MouseListener{
+public class Window extends JFrame {
     private int WIDTH;
     private int HEIGHT;
-    JLabel temp;
-    JLabel sunlight;
-    JLabel food;
-    JLabel pH;
-    JLabel predators;
-    JLabel salt;
-    JLabel pollution;
-    JLabel radiation;
-    JLabel card1 = new JLabel();
-    JLabel card2 = new JLabel();
-    //JLabel card1 = new JLabel();
-    //JLabel card2 = new JLabel();
+    static JLabel temp;
+    static JLabel sunlight;
+    static JLabel food;
+    static JLabel pH;
+    static JLabel predators;
+    static JLabel salt;
+    static JLabel pollution;
+    static JLabel radiation;
+    static JLabel card1 = new JLabel();
+    static JLabel card2 = new JLabel();
+    Hand h = new Hand();                                                       //Creates hand
+    Environment e = new Environment();                                          //Don't call this, just called for the constructor
+    
+    
     
     public Window(int x){
         super("Cell Growth Simulator 2016");
@@ -43,6 +46,8 @@ public class Window extends JFrame implements MouseListener{
         this.createWindow();
     }
     public Window(){}
+
+
     
     private void createWindow(){
         Window frame = new Window();
@@ -64,7 +69,7 @@ public class Window extends JFrame implements MouseListener{
         //Initializes and sets initial values
         temp = new JLabel("<html> <font color='white'; size='8'> 20° </font></html>");
         sunlight = new JLabel("<html> <font color='white'; size='8'> 3 </font></html>");
-        food = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");;
+        food = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
         pH = new JLabel("<html> <font color='white'; size='8'> 7.0 </font></html>");
         predators = new JLabel("<html> <font color='white'; size='8'> 0 </font></html>");
         salt = new JLabel("<html> <font color='white'; size='8'> 0 </font></html>");
@@ -103,9 +108,12 @@ public class Window extends JFrame implements MouseListener{
         layout.putConstraint(SpringLayout.WEST, radiation, 120, SpringLayout.WEST, frame);
         
         //Setting cards to Mr.David for testing purposes
-        card1.setIcon(new ImageIcon("resources/card_5.png"));
-        card2.setIcon(new ImageIcon("resources/card_5.png"));
+        //card1.setIcon(new ImageIcon("resources/card_5.png"));
+        //card2.setIcon(new ImageIcon("resources/card_20.png"));
+        card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
+        card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
 
+        
         //Add cards
         layout.putConstraint(SpringLayout.NORTH, card1, 388, SpringLayout.NORTH, frame);
         layout.putConstraint(SpringLayout.WEST, card1, 400, SpringLayout.WEST, frame);
@@ -114,48 +122,25 @@ public class Window extends JFrame implements MouseListener{
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        card1.addMouseListener(this);
-        card2.addMouseListener(this);
+        frame.setResizable(false);     
+        card1.addMouseListener(new Mouse(h.hand.get(0)));
+        card2.addMouseListener(new Mouse(h.hand.get(1)));
+        
         frame.setVisible(true);
     }
     
-    public void update(){                                                       //updates after something happens
+    public static void update(){                                                       //updates after something happens
         //Set values
-        temp.setText(Integer.toString(Environment.temp));
-        sunlight.setText(Integer.toString(Environment.sunlight));
-        food.setText(Integer.toString(Environment.food));
-        pH.setText(Double.toString(Environment.pH));
-        predators.setText(Integer.toString(Environment.predators));
-        pollution.setText(Integer.toString(Environment.pollution));
-        radiation.setText(Double.toString(Environment.radiation));
+        temp.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.temp) + "°" + " </font></html>");
+        sunlight.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.sunlight) + " </font></html>");
+        food.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.food) + " </font></html>");
+        pH.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.pH) + " </font></html>");
+        predators.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.predators) + " </font></html>");
+        pollution.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.pollution) + " </font></html>");
+        radiation.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.radiation) + "%" + " </font></html>");
         
+        //card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
+        //card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
     }
 
-    @Override
-    public void mouseClicked(MouseEvent me) {
-        System.out.println("jack Roy is the living embodiment of jesus");
-                
-    }
-
-    @Override
-    public void mousePressed(MouseEvent me) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent me) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent me) {
-        System.out.println("in");//active when mouse entered a card
-    }
-
-    @Override
-    public void mouseExited(MouseEvent me) {
-        System.out.println("out");//active when card leaves a card
-    }
-    
 }
