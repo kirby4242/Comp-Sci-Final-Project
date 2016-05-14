@@ -22,8 +22,7 @@ public class Card5 extends Card {
      
     @Override
     public void play(){
-        Environment.predators = 0;
-        Window.update();
+        Environment.setPred(0);
     }
 
 }

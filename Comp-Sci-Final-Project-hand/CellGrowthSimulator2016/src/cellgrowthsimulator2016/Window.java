@@ -33,7 +33,7 @@ public class Window extends JFrame {
     static JLabel radiation;
     static JLabel card1 = new JLabel();
     static JLabel card2 = new JLabel();
-    Hand h = new Hand();                                                        //Creates hand
+    Hand h = new Hand();                                                       //Creates hand
     Environment e = new Environment();                                          //Don't call this, just called for the constructor
     
     
@@ -123,8 +123,8 @@ public class Window extends JFrame {
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);     
-        card1.addMouseListener(Mouse(h.hand.get(0)));
-        card2.addMouseListener(Mouse(h.hand.get(1)));
+        card1.addMouseListener(new Mouse(h.hand.get(0)));
+        card2.addMouseListener(new Mouse(h.hand.get(1)));
         
         frame.setVisible(true);
     }

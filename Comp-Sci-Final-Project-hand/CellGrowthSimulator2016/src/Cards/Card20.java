@@ -23,7 +23,6 @@ public class Card20 extends Card {
     @Override
     public void play(){
         Environment.setSun(Environment.sunlight-3);
-        Window.update();
     }
 
 }
