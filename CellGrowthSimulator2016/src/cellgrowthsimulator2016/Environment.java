@@ -15,6 +15,7 @@ public class Environment {
     public static int food;
     public static double pH;
     public static int predators;
+    public static int salt;
     public static int pollution;
     public static double radiation;
     
@@ -25,6 +26,7 @@ public class Environment {
         food = 1;
         pH = 7.0;
         predators = 20;
+        salt = 0;
         pollution = 0;
         radiation = 0.0;  
     }
@@ -47,6 +49,10 @@ public class Environment {
     }
     public static void setPred(int i){
         predators = i;
+        Window.update();
+    }
+    public static void setSalt(int i){
+        salt = i;
         Window.update();
     }
     public static void setPoll(int i){
