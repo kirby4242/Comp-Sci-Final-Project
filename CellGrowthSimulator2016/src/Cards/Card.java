@@ -18,14 +18,4 @@ public abstract class Card{
     String rarity;          //Card rarity
     
     public abstract void play();    //Method that activates when you play the card
-    
-    /*
-    * card 1 is legendary
-    * 2-5 are mythic
-    * 6-15 are rare
-    * 17-30 are uncommon
-    * 31-50 are common
-    */
-    //DO NOT GO OFF THE SPREADSHEET!!!!!
-    //USE THE SETTERS IN ENVIRONMENT TO CHANGE STUFF IN THE PLAY METHOD
 }
