@@ -71,7 +71,7 @@ public class Hand {
                             break;
                         case(9): hand.set(0,new Card41());
                             break;
-                        case(10): hand.set(0,new Card10());
+                        case(10): hand.set(0,new Card40());
                             break;
                         case(11): hand.set(0,new Card39());
                             break;
@@ -226,7 +226,7 @@ public class Hand {
                             break;
                         case(9): hand.set(1,new Card41());
                             break;
-                        case(10): hand.set(1,new Card10());
+                        case(10): hand.set(1,new Card40());
                             break;
                         case(11): hand.set(1,new Card39());
                             break;
