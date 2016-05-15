@@ -107,9 +107,6 @@ public class Window extends JFrame {
         layout.putConstraint(SpringLayout.NORTH, radiation, 675, SpringLayout.NORTH, frame);
         layout.putConstraint(SpringLayout.WEST, radiation, 120, SpringLayout.WEST, frame);
         
-        //Setting cards to Mr.David for testing purposes
-        //card1.setIcon(new ImageIcon("resources/card_5.png"));
-        //card2.setIcon(new ImageIcon("resources/card_20.png"));
         card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
         card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
 
@@ -137,6 +134,7 @@ public class Window extends JFrame {
         pH.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.pH) + " </font></html>");
         predators.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.predators) + " </font></html>");
         pollution.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.pollution) + " </font></html>");
+        salt.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.salt) + " </font></html>");
         radiation.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.radiation) + "%" + " </font></html>");
         
         //card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
