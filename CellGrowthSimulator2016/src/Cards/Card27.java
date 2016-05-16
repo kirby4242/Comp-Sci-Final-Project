@@ -4,25 +4,25 @@
  * and open the template in the editor.
  */
 package Cards;
-import cellgrowthsimulator2016.*;
+
 import cellgrowthsimulator2016.Environment;
-import java.awt.event.MouseEvent;
+
 /**
  *
- * @author Kids
+ * @author Rich
  */
-public class Card20 extends Card {
-    
-    public Card20(){
-        name = "Summer Sun";
-        imageAddress = "resources/card_20.png";
-        id = 20;
+public class Card27 extends Card{
+        public Card27(){
+        name = "Vampiric Cell";
+        imageAddress = "resources/card_27.png";
+        id = 27;
         rarity = "Uncommon";
         
     }
     @Override
     public void play(){
-        Environment.setSun(Environment.sunlight+3);
+        Environment.setSun(Environment.sunlight-100000000);
+        // kill limits for sun decreasd jk
     }
 
 }

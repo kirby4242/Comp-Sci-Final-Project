@@ -10,7 +10,7 @@ package cellgrowthsimulator2016;
  * @author Kids
  */
 public class Cell {
-    public int size;
+    public static int size;
     public int growth;
     
     public Cell(){

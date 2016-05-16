@@ -9,20 +9,21 @@ import cellgrowthsimulator2016.Environment;
 import java.awt.event.MouseEvent;
 /**
  *
- * @author Kids
+ * @author KeeganP
  */
-public class Card20 extends Card {
+public class Card12 extends Card {
     
-    public Card20(){
-        name = "Summer Sun";
-        imageAddress = "resources/card_20.png";
-        id = 20;
-        rarity = "Uncommon";
-        
+    public Card12(){
+        name = "Alpha Male";
+        imageAddress = "resources/card_12.png";
+        id = 12;
+        rarity = "Rare";
     }
+     
     @Override
     public void play(){
-        Environment.setSun(Environment.sunlight+3);
+        Environment.setPred(Environment.predators - 1);
+        Environment.setFood(Environment.food + 1);
     }
 
 }
