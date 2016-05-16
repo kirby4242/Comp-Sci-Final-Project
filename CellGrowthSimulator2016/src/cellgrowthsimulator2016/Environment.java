@@ -25,7 +25,7 @@ public class Environment {
         sunlight = 3;
         food = 1;
         pH = 7.0;
-        predators = 20;
+        predators = 0;
         salt = 0;
         pollution = 0;
         radiation = 0.0;  

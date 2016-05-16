@@ -33,7 +33,7 @@ public class Window extends JFrame {
     static JLabel radiation;
     static JLabel card1 = new JLabel();
     static JLabel card2 = new JLabel();
-    Hand h = new Hand();                                                       //Creates hand
+    static Hand h = new Hand();                                                       //Creates hand
     Environment e = new Environment();                                          //Don't call this, just called for the constructor
     
     
@@ -136,9 +136,11 @@ public class Window extends JFrame {
         pollution.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.pollution) + " </font></html>");
         salt.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.salt) + " </font></html>");
         radiation.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.radiation) + "%" + " </font></html>");
-        
-        //card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
-        //card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
+        h = new Hand();
+        card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
+        card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
+        card1.addMouseListener(new Mouse(h.hand.get(0)));
+        card2.addMouseListener(new Mouse(h.hand.get(1)));
     }
 
 }
