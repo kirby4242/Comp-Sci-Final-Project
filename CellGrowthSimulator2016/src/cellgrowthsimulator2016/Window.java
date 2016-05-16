@@ -128,6 +128,34 @@ public class Window extends JFrame {
     
     public static void update(){                                                       //updates after something happens
         //Set values
+                System.out.println("call to update");
+        if(Environment.temp<0){
+            Environment.setTemp(0);
+        }
+        if(Environment.sunlight<0){
+            Environment.setSun(0);
+        }
+        if(Environment.food<0){
+            Environment.setFood(0);
+        }
+        if(Environment.pH<1){
+            Environment.setPH(1);
+        }
+        if(Environment.pH>14){
+            Environment.setPH(14);
+        }
+        if(Environment.predators<0){
+            Environment.setPred(0);
+        }
+        if(Environment.pollution<0){
+            Environment.setPoll(0);
+        }
+        if(Environment.salt<0){
+            Environment.setSalt(0);
+        }
+        if(Environment.radiation<0.0){
+            Environment.setRad(0.0);
+        }
         temp.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.temp) + "°" + " </font></html>");
         sunlight.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.sunlight) + " </font></html>");
         food.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.food) + " </font></html>");
