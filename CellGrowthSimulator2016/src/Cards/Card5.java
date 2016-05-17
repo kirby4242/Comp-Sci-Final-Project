@@ -22,6 +22,7 @@ public class Card5 extends Card {
      
     @Override
     public void play(){
+        System.out.println("c5 trigger");
         Environment.setPred(0);
     }
 

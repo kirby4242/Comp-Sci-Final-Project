@@ -20,6 +20,7 @@ public class Card39 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c39 trigger");
         Environment.setPoll(Environment.pollution-3);
         Environment.setPH(Environment.pH+.5);
     }

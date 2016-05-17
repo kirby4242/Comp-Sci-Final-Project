@@ -21,6 +21,7 @@ public class Card27 extends Card{
     }
     @Override
     public void play(){
+        System.out.println("c27 trigger");
         Environment.setSun(Environment.sunlight-100000000);
         // kill limits for sun decreasd jk
     }

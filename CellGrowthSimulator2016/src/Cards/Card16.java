@@ -22,6 +22,7 @@ public class Card16 extends Card {
      
     @Override
     public void play(){
+        System.out.println("c16 trigger");
         Environment.setRad(Environment.radiation/4.0);
     }
 

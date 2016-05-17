@@ -21,6 +21,7 @@ public class Card19 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c19 trigger");
         Environment.setFood(Environment.food+2);
         Environment.setTemp(Environment.temp-1);
     }

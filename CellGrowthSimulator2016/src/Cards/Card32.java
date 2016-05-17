@@ -21,6 +21,7 @@ public class Card32 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c32 trigger");
         Environment.setPoll(0);
     }
 

@@ -21,6 +21,7 @@ public class Card33 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c32 trigger");
         Environment.setFood(100);
         //size =100
         

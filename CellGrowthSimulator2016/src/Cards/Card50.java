@@ -22,6 +22,7 @@ public class Card50 extends Card{
     
     @Override
     public void play() {
+        System.out.println("c50 trigger");
         Cell.size ++;
         Environment.setFood(Environment.food+1);
     }

@@ -20,6 +20,7 @@ public class Card38 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c38 trigger");
         Environment.setPoll(Environment.pollution+3);
     }
 }

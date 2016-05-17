@@ -20,6 +20,7 @@ public class Card42 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c42 trigger");
         if(Environment.sunlight >= 3) Environment.setFood(Environment.food+3);
         else Environment.setFood(Environment.food);
     }
