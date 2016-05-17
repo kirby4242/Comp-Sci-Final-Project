@@ -31,6 +31,8 @@ public class Window extends JFrame {
     static JLabel salt;
     static JLabel pollution;
     static JLabel radiation;
+    static JLabel size;
+    static JLabel turn;
     static JLabel card1 = new JLabel();
     static JLabel card2 = new JLabel();
     static Hand h = new Hand();                                                       //Creates hand
@@ -67,6 +69,8 @@ public class Window extends JFrame {
         layout.putConstraint(SpringLayout.NORTH, background, 0, SpringLayout.NORTH, frame);
         
         //Initializes and sets initial values
+        turn = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
+        size = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
         temp = new JLabel("<html> <font color='white'; size='8'> 20° </font></html>");
         sunlight = new JLabel("<html> <font color='white'; size='8'> 3 </font></html>");
         food = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
@@ -76,6 +80,8 @@ public class Window extends JFrame {
         pollution = new JLabel("<html> <font color='white'; size='8'> 0 </font></html>");
         radiation = new JLabel("<html> <font color='white'; size='8'> 0.0% </font></html>");
         
+        layers.add(turn, new Integer(3));
+        layers.add(size, new Integer(3));
         layers.add(temp, new Integer(3));
         layers.add(sunlight, new Integer(3));
         layers.add(food, new Integer(3));
@@ -88,6 +94,10 @@ public class Window extends JFrame {
         layers.add(card2, new Integer(3));
         
         //Place them on the screen
+        layout.putConstraint(SpringLayout.NORTH, turn, 305, SpringLayout.NORTH, frame);
+        layout.putConstraint(SpringLayout.WEST, turn, 100, SpringLayout.WEST, frame);
+        layout.putConstraint(SpringLayout.NORTH, size, 210, SpringLayout.NORTH, frame);
+        layout.putConstraint(SpringLayout.WEST, size, 130, SpringLayout.WEST, frame);
         layout.putConstraint(SpringLayout.NORTH, temp, 355, SpringLayout.NORTH, frame);
         layout.putConstraint(SpringLayout.WEST, temp, 110, SpringLayout.WEST, frame);
         layout.putConstraint(SpringLayout.NORTH, sunlight, 400, SpringLayout.NORTH, frame);
@@ -129,12 +139,14 @@ public class Window extends JFrame {
     public static void update(){                                                       //updates after something happens
         //Set values
         System.out.println("call to update");
+        Environment.livable();
+        Cell.turn ++;//this goes twice with the double frature cards, 
         if(Environment.temp<0){
             Environment.setTemp(0);
         }
-        if(Environment.sunlight<0){
-            Environment.setSun(0);
-        }
+//        if(Environment.sunlight<0){//is allowed to go negative
+//            Environment.setSun(0);
+//        }
         if(Environment.food<0){
             Environment.setFood(0);
         }
@@ -156,6 +168,8 @@ public class Window extends JFrame {
         if(Environment.radiation<0.0){
             Environment.setRad(0.0);
         }
+        turn.setText("<html> <font color='white'; size='8'> " + Integer.toString(Cell.turn) + " </font></html>");
+        size.setText("<html> <font color='white'; size='8'> " + Integer.toString(Cell.size) + " </font></html>");
         temp.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.temp) + "°" + " </font></html>");
         sunlight.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.sunlight) + " </font></html>");
         food.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.food) + " </font></html>");
