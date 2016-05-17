@@ -20,6 +20,7 @@ public class Card40 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c40 trigger");
         Environment.setRad(Environment.radiation+2);
     }
 }

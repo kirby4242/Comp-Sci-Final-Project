@@ -22,6 +22,7 @@ public class Card8 extends Card {
      
     @Override
     public void play(){
+        System.out.println("c8 trigger");
         Environment.setPH(7.0);
         Environment.setSalt(Environment.salt + 5);
     }

@@ -22,6 +22,9 @@ public class Card1 extends Card{
     
     @Override
     public void play(){
+        System.out.println("c1 trigger");
+        System.out.println("YOU WIN!!!!");
+        System.exit(0);
         /* Win thing*/
     }
 }

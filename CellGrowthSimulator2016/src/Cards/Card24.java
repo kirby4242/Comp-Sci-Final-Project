@@ -21,6 +21,7 @@ public class Card24 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c24 trigger");
         Environment.setPoll(Environment.pollution-2);
         // lowers pollution kill limits
     }

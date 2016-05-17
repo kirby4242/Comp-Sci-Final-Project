@@ -21,6 +21,7 @@ public class Card34 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c34 trigger");
         System.exit(-1);
     }
 

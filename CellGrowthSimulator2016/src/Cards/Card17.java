@@ -22,6 +22,7 @@ public class Card17 extends Card {
      
     @Override
     public void play(){
+        System.out.println("c17 trigger");
         Environment.setSun(Environment.sunlight - 3);
     }
 

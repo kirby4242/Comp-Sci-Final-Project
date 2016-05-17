@@ -128,7 +128,7 @@ public class Window extends JFrame {
     
     public static void update(){                                                       //updates after something happens
         //Set values
-                System.out.println("call to update");
+        System.out.println("call to update");
         if(Environment.temp<0){
             Environment.setTemp(0);
         }
@@ -165,6 +165,10 @@ public class Window extends JFrame {
         salt.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.salt) + " </font></html>");
         radiation.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.radiation) + "%" + " </font></html>");
         h = new Hand();
+        
+        card1.removeMouseListener(card1.getMouseListeners()[0]);//prevent errors
+        card2.removeMouseListener(card2.getMouseListeners()[0]);
+        
         card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
         card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
         card1.addMouseListener(new Mouse(h.hand.get(0)));

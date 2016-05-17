@@ -22,6 +22,7 @@ public class Card9 extends Card {
      
     @Override
     public void play(){
+        System.out.println("c9 trigger");
         Environment.setPoll(Environment.pollution - 3);
         Environment.setFood(Environment.food +3);
     }

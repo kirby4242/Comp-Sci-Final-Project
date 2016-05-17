@@ -20,6 +20,8 @@ public class Card35 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c35 trigger");
+        Environment.setFood(Environment.food);
         //implementation not shown
     }
     

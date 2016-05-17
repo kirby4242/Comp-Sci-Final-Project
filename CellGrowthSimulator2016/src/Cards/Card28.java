@@ -21,6 +21,7 @@ public class Card28 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c28 trigger");
         Environment.setRad(Environment.radiation-5);
         // radiation becomes less of a problem
     }

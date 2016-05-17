@@ -21,6 +21,7 @@ public class Card31 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c31 trigger");
         Environment.setTemp(0);
     }
 

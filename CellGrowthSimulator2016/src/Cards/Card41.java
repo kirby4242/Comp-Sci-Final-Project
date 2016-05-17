@@ -20,6 +20,8 @@ public class Card41 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c41 trigger");
+        Environment.setFood(Environment.food);
         //implimentation not shown, we need salt
     }
 }

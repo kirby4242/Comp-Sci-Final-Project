@@ -21,6 +21,7 @@ public class Card26 extends Card {
     }
     @Override
     public void play(){
+        System.out.println("c26 trigger");
         Environment.setSun(Environment.sunlight+100000);
         // sunlight doesnt kill you lol.
     }

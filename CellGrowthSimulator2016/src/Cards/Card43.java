@@ -20,6 +20,7 @@ public class Card43 extends Card{
 
     @Override
     public void play() {
+        System.out.println("c43 trigger");
         Environment.setTemp(Environment.temp-2);
     }
 }

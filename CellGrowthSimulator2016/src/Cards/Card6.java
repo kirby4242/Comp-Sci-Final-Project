@@ -22,6 +22,7 @@ public class Card6 extends Card {
      
     @Override
     public void play(){
+        System.out.println("c6 trigger");
         Environment.setFood(Environment.food +(Environment.salt /2));
     }
 

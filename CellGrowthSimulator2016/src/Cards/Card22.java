@@ -21,6 +21,7 @@ public class Card22 extends Card{
     }
     @Override
     public void play(){
+        System.out.println("c22 trigger");
         Environment.setSun(Environment.sunlight);
         // salt becomes less of a problem
     }
