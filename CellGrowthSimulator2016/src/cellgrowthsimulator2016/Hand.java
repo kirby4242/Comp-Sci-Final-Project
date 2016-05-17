@@ -18,8 +18,8 @@ public class Hand {
     
     public Hand(){
         hand = new ArrayList();
-//        hand.add(new Card49());
-//        hand.add(new Card20());
+//        hand.add(new Card40());
+//        hand.add(new Card40());
         getCard();
         getCard();
     }

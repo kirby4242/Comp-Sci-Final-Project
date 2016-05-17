@@ -6,6 +6,7 @@
 package Cards;
 
 import cellgrowthsimulator2016.Environment;
+import cellgrowthsimulator2016.Cell;
 
 /**
  *
@@ -22,7 +23,8 @@ public class Card27 extends Card{
     @Override
     public void play(){
         System.out.println("c27 trigger");
-        Environment.setSun(Environment.sunlight-100000000);
+        Environment.LBsunlight = -999999999;
+        Environment.setSun(Environment.sunlight-1000);
         // kill limits for sun decreasd jk
     }
 

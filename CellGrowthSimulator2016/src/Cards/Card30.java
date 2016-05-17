@@ -22,7 +22,7 @@ public class Card30 extends Card{
     @Override
     public void play(){
         System.out.println("c30 trigger");
-        System.out.println("YOU DIED");
+        System.out.println("YOU ARE DIE");
         Environment.setPred(1000000000);
         Environment.setRad(10000000000.0);
         Environment.setTemp(1000000000);
