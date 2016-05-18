@@ -21,13 +21,13 @@ public class Environment {
     
     //lethal condition variables
     public static int LTtemp = 30;
-    public static int LTsunlight = 20;
+    public static int LTsunlight = 50;
     public static double LTpH = 12;
     public static int LTpollution=7;
     public static double LTradiation=5;
     
     public static int LBtemp = 10;
-    public static int LBsunlight=-6;
+    public static int LBsunlight=-10;
     public static double LBpH = 2;
     public static int LBpollution = -999999999;
     public static double LBradiation = -999999999;
@@ -75,7 +75,7 @@ public class Environment {
     public static void setRad(double i){
         radiation = i;
         Window.update();
-    }  
+    }
     //death conditions
     public static void livable(){
         if(temp > LTtemp || temp < LBtemp){
