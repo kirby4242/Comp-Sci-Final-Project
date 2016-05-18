@@ -35,9 +35,11 @@ public class Window extends JFrame {
     static JLabel turn;
     static JLabel card1 = new JLabel();
     static JLabel card2 = new JLabel();
+    static JLabel tlCell = new JLabel();
+    static JLabel beginningCell = new JLabel();
     static Hand h = new Hand();                                                       //Creates hand
     Environment e = new Environment();                                          //Don't call this, just called for the constructor
-    
+    public static int radProtection;
     
     
     public Window(int x){
@@ -80,6 +82,8 @@ public class Window extends JFrame {
         pollution = new JLabel("<html> <font color='white'; size='8'> 0 </font></html>");
         radiation = new JLabel("<html> <font color='white'; size='8'> 0.0% </font></html>");
         
+        radProtection = 0;
+        
         layers.add(turn, new Integer(3));
         layers.add(size, new Integer(3));
         layers.add(temp, new Integer(3));
@@ -119,7 +123,19 @@ public class Window extends JFrame {
         
         card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
         card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
-
+        
+        //add icon cell
+        tlCell.setIcon(new ImageIcon("resources/cell.jpg"));
+        layers.add(tlCell, new Integer(3));
+        layout.putConstraint(SpringLayout.NORTH, tlCell, 60, SpringLayout.NORTH, frame);
+        layout.putConstraint(SpringLayout.WEST, tlCell, 40, SpringLayout.WEST, frame);
+        
+        //add main cells
+        beginningCell.setIcon(new ImageIcon("resources/cell.png"));
+        layers.add(beginningCell, new Integer(2));
+        layout.putConstraint(SpringLayout.NORTH, beginningCell, 100, SpringLayout.NORTH, frame);
+        layout.putConstraint(SpringLayout.WEST, beginningCell, 600, SpringLayout.WEST, frame);
+        
         
         //Add cards
         layout.putConstraint(SpringLayout.NORTH, card1, 388, SpringLayout.NORTH, frame);
@@ -138,15 +154,19 @@ public class Window extends JFrame {
     
     public static void update(){                                                       //updates after something happens
         //Set values
-        System.out.println("call to update");
         Environment.livable();
         Cell.turn ++;//this goes twice with the double frature cards, 
+        if(Environment.food > 1){
+            Cell.size++;
+            Environment.food--;
+        }
+        if(Cell.turn%7 == 0){
+            Environment.radiation += 2.0;
+            Environment.predators += 1;
+        }
         if(Environment.temp<0){
             Environment.setTemp(0);
         }
-//        if(Environment.sunlight<0){//is allowed to go negative
-//            Environment.setSun(0);
-//        }
         if(Environment.food<0){
             Environment.setFood(0);
         }
@@ -168,6 +188,24 @@ public class Window extends JFrame {
         if(Environment.radiation<0.0){
             Environment.setRad(0.0);
         }
+        
+        //check radiation resistance
+        if(radProtection > 100){
+            radProtection = 100;
+        }
+        switch(radProtection){
+            case(25):
+                Environment.radiation *= 0.75;
+            case(50):
+                Environment.radiation *= 0.5;
+            case(75):
+                Environment.radiation *= 0.25;
+            case(100):
+                Environment.radiation = 0;
+            default:
+                break;
+        }
+        
         turn.setText("<html> <font color='white'; size='8'> " + Integer.toString(Cell.turn) + " </font></html>");
         size.setText("<html> <font color='white'; size='8'> " + Integer.toString(Cell.size) + " </font></html>");
         temp.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.temp) + "°" + " </font></html>");
