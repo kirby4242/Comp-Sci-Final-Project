@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
  * @author keeganparkhurst
  */
 public abstract class Card{
-    String name;            //String for cardname
+    public static String name;            //String for cardname
     public String imageAddress;    //String for image address
     int id;                 //Card id
     String rarity;          //Card rarity
