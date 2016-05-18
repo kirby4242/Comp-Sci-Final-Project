@@ -22,7 +22,7 @@ public class Card23 extends Card{
     @Override
     public void play(){
         System.out.println("c23 trigger");
-        Environment.setTemp(Environment.temp+ ((int) Math.random()*6-10));
+        Environment.setTemp(Environment.temp+ ((int) Math.random()*2-1));
     }
 
 }
