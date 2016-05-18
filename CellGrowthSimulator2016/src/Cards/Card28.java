@@ -5,7 +5,7 @@
  */
 package Cards;
 
-import cellgrowthsimulator2016.Environment;
+import cellgrowthsimulator2016.*;
 
 /**
  *
@@ -24,6 +24,7 @@ public class Card28 extends Card {
         System.out.println("c28 trigger");
         Environment.setRad(Environment.radiation-5);
         // radiation becomes less of a problem
+        Window.radProtection = 100;
     }
 
 }
