@@ -12,12 +12,10 @@ package cellgrowthsimulator2016;
 public class Cell {
     public static int size;
     public int growth;
-    public static int turn;
     
     public Cell(){
         size = 1;
         growth = 0;
-        turn=1;
     }
     
 }

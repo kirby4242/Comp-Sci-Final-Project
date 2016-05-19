@@ -15,6 +15,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.SpringLayout;
 
 import cards.*;
+import java.util.ArrayList;
 /**
  *
  * @author Sio
@@ -31,16 +32,14 @@ public class Window extends JFrame {
     static JLabel salt;
     static JLabel pollution;
     static JLabel radiation;
-    static JLabel size;
-    static JLabel turn;
     static JLabel card1 = new JLabel();
     static JLabel card2 = new JLabel();
-    static JLabel tlCell = new JLabel();
-    static JLabel beginningCell = new JLabel();
     static Hand h = new Hand();                                                       //Creates hand
     Environment e = new Environment();                                          //Don't call this, just called for the constructor
-    public static int radProtection;
+    ArrayList<Mouse> Mouses = new ArrayList<Mouse>();
     
+    static   Mouse m = new Mouse(h.hand.get(0));
+   static      Mouse z = new Mouse(h.hand.get(1));
     
     public Window(int x){
         super("Cell Growth Simulator 2016");
@@ -71,8 +70,6 @@ public class Window extends JFrame {
         layout.putConstraint(SpringLayout.NORTH, background, 0, SpringLayout.NORTH, frame);
         
         //Initializes and sets initial values
-        turn = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
-        size = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
         temp = new JLabel("<html> <font color='white'; size='8'> 20° </font></html>");
         sunlight = new JLabel("<html> <font color='white'; size='8'> 3 </font></html>");
         food = new JLabel("<html> <font color='white'; size='8'> 1 </font></html>");
@@ -82,10 +79,6 @@ public class Window extends JFrame {
         pollution = new JLabel("<html> <font color='white'; size='8'> 0 </font></html>");
         radiation = new JLabel("<html> <font color='white'; size='8'> 0.0% </font></html>");
         
-        radProtection = 0;
-        
-        layers.add(turn, new Integer(3));
-        layers.add(size, new Integer(3));
         layers.add(temp, new Integer(3));
         layers.add(sunlight, new Integer(3));
         layers.add(food, new Integer(3));
@@ -98,10 +91,6 @@ public class Window extends JFrame {
         layers.add(card2, new Integer(3));
         
         //Place them on the screen
-        layout.putConstraint(SpringLayout.NORTH, turn, 305, SpringLayout.NORTH, frame);
-        layout.putConstraint(SpringLayout.WEST, turn, 100, SpringLayout.WEST, frame);
-        layout.putConstraint(SpringLayout.NORTH, size, 210, SpringLayout.NORTH, frame);
-        layout.putConstraint(SpringLayout.WEST, size, 130, SpringLayout.WEST, frame);
         layout.putConstraint(SpringLayout.NORTH, temp, 355, SpringLayout.NORTH, frame);
         layout.putConstraint(SpringLayout.WEST, temp, 110, SpringLayout.WEST, frame);
         layout.putConstraint(SpringLayout.NORTH, sunlight, 400, SpringLayout.NORTH, frame);
@@ -123,19 +112,7 @@ public class Window extends JFrame {
         
         card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
         card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
-        
-        //add icon cell
-        tlCell.setIcon(new ImageIcon("resources/cell.jpg"));
-        layers.add(tlCell, new Integer(3));
-        layout.putConstraint(SpringLayout.NORTH, tlCell, 60, SpringLayout.NORTH, frame);
-        layout.putConstraint(SpringLayout.WEST, tlCell, 40, SpringLayout.WEST, frame);
-        
-        //add main cells
-        beginningCell.setIcon(new ImageIcon("resources/cell.png"));
-        layers.add(beginningCell, new Integer(2));
-        layout.putConstraint(SpringLayout.NORTH, beginningCell, 100, SpringLayout.NORTH, frame);
-        layout.putConstraint(SpringLayout.WEST, beginningCell, 600, SpringLayout.WEST, frame);
-        
+
         
         //Add cards
         layout.putConstraint(SpringLayout.NORTH, card1, 388, SpringLayout.NORTH, frame);
@@ -146,68 +123,19 @@ public class Window extends JFrame {
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);     
-        card1.addMouseListener(new Mouse(h.hand.get(0)));
-        card2.addMouseListener(new Mouse(h.hand.get(1)));
+
+        card1.addMouseListener(m);
+        card2.addMouseListener(z);
         
         frame.setVisible(true);
     }
     
     public static void update(){                                                       //updates after something happens
         //Set values
-        Environment.livable();
-        Cell.turn ++;//this goes twice with the double frature cards, 
-        if(Environment.food > 1){
-            Cell.size++;
-            Environment.food--;
-        }
-        if(Cell.turn%7 == 0){
-            Environment.radiation += 2.0;
-            Environment.predators += 1;
-        }
-        if(Environment.temp<0){
-            Environment.setTemp(0);
-        }
-        if(Environment.food<0){
-            Environment.setFood(0);
-        }
-        if(Environment.pH<1){
-            Environment.setPH(1);
-        }
-        if(Environment.pH>14){
-            Environment.setPH(14);
-        }
-        if(Environment.predators<0){
-            Environment.setPred(0);
-        }
-        if(Environment.pollution<0){
-            Environment.setPoll(0);
-        }
-        if(Environment.salt<0){
-            Environment.setSalt(0);
-        }
-        if(Environment.radiation<0.0){
-            Environment.setRad(0.0);
-        }
-        
-        //check radiation resistance
-        if(radProtection > 100){
-            radProtection = 100;
-        }
-        switch(radProtection){
-            case(25):
-                Environment.radiation *= 0.75;
-            case(50):
-                Environment.radiation *= 0.5;
-            case(75):
-                Environment.radiation *= 0.25;
-            case(100):
-                Environment.radiation = 0;
-            default:
-                break;
-        }
-        
-        turn.setText("<html> <font color='white'; size='8'> " + Integer.toString(Cell.turn) + " </font></html>");
-        size.setText("<html> <font color='white'; size='8'> " + Integer.toString(Cell.size) + " </font></html>");
+               card1.removeMouseListener(m);
+         card2.removeMouseListener(z); 
+        h = new Hand();
+
         temp.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.temp) + "°" + " </font></html>");
         sunlight.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.sunlight) + " </font></html>");
         food.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.food) + " </font></html>");
@@ -217,14 +145,15 @@ public class Window extends JFrame {
         salt.setText("<html> <font color='white'; size='8'> " + Integer.toString(Environment.salt) + " </font></html>");
         radiation.setText("<html> <font color='white'; size='8'> " + Double.toString(Environment.radiation) + "%" + " </font></html>");
         h = new Hand();
-        
-        card1.removeMouseListener(card1.getMouseListeners()[0]);//prevent errors
-        card2.removeMouseListener(card2.getMouseListeners()[0]);
-        
+         Mouse t = new Mouse(h.hand.get(0));
+       Mouse q = new Mouse(h.hand.get(1));
+        card1.addMouseListener(t);
+        card2.addMouseListener(q);
         card1.setIcon(new ImageIcon(h.hand.get(0).imageAddress));
-        card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));
-        card1.addMouseListener(new Mouse(h.hand.get(0)));
-        card2.addMouseListener(new Mouse(h.hand.get(1)));
+        card2.setIcon(new ImageIcon(h.hand.get(1).imageAddress));     
+        
+       
+       
     }
 
 }
