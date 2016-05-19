@@ -19,13 +19,26 @@ public class Environment {
     public static int pollution;
     public static double radiation;
     
+    //lethal condition variables
+    public static int LTtemp = 30;
+    public static int LTsunlight = 50;
+    public static double LTpH = 12;
+    public static int LTpollution=8;
+    public static double LTradiation=7;
+    
+    public static int LBtemp = 10;
+    public static int LBsunlight=-10;
+    public static double LBpH = 2;
+    public static int LBpollution = -999999999;
+    public static double LBradiation = -999999999;
+    
     //default constructor
     public Environment(){
         temp = 20;
         sunlight = 3;
         food = 1;
         pH = 7.0;
-        predators = 20;
+        predators = 0;
         salt = 0;
         pollution = 0;
         radiation = 0.0;  
@@ -62,6 +75,28 @@ public class Environment {
     public static void setRad(double i){
         radiation = i;
         Window.update();
-    }  
-    
+    }
+    //death conditions
+    public static void livable(){
+        if(temp > LTtemp || temp < LBtemp){
+            System.out.println("YOU DIED FROM TEMPERATURE");
+            System.exit(0);
+        }
+        if(sunlight > LTsunlight || sunlight < LBsunlight){
+            System.out.println("YOU DIED FROM SUNLIGHT");
+            System.exit(0);
+        }
+        if(pH > LTpH || pH < LBpH){
+            System.out.println("YOU DIED FROM pH");
+            System.exit(0);
+        }
+        if(pollution > LTpollution || pollution < LBpollution){
+            System.out.println("YOU DIED FROM POLLUTION");
+            System.exit(0);
+        }
+        if(radiation > LTradiation || radiation < LBradiation){
+            System.out.println("YOU DIED FROM RADIATION");
+            System.exit(0);
+        }
+    }
 }

@@ -16,15 +16,15 @@ import java.awt.event.MouseListener;
 public class Mouse implements MouseListener{
     Card c;
     public Mouse(Card c){
-        this.c = c;
+        this.c = c;          // creates unique zones on cards
     }
     
     @Override
     public void mouseClicked(MouseEvent me) {
         System.out.println("click");
-        c.play();
+        c.play(); // allows you to play card
     }
-
+// unnessary methods that were forced to be added due to implementation
     @Override
     public void mousePressed(MouseEvent me) {
 
