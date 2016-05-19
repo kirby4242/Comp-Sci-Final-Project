@@ -23,6 +23,7 @@ public class Card10 extends Card {
     @Override
     public void play(){
         System.out.println("c10 trigger");
+        Window.radProtection += 50;
         Environment.setRad(Environment.radiation/2);
     }
 

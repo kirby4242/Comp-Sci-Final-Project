@@ -24,6 +24,7 @@ public class Card16 extends Card {
     public void play(){
         System.out.println("c16 trigger");
         Environment.setRad(Environment.radiation/4.0);
+        Window.radProtection += 25;
     }
 
 }
